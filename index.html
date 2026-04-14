@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="gu" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advik Ayurveda Clinic | અદ્વિક આયુર્વેદ ક્લિનિક</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anek+Gujarati:wght@300;400;500;600;700&family=Noto+Serif+Gujarati:wght@400;700&family=Cormorant+Garamond:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Confetti for celebrations -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            cream: '#faf9f6',
+                            sage: '#8fbc8f',
+                            forest: '#1a4d2e',
+                            gold: '#c9a227',
+                            maroon: '#7b2d2e',
+                            warm: '#f5f5dc',
+                            dark: '#2c3e50'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Anek Gujarati', 'sans-serif'],
+                        serif: ['Noto Serif Gujarati', 'serif'],
+                        display: ['Cormorant Garamond', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Premium Custom Styles */
+        .glass-premium {
+            background: rgba(250, 249, 246, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .dark .glass-premium {
+            background: rgba(15, 23, 42, 0.85);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #1a4d2e 0%, #7b2d2e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(26, 77, 46, 0.25);
+        }
+
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(201, 162, 39, 0.4);
+        }
+
+        .leaf-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 40c0-22.091-17.909-40-40-40s-40 17.909-40 40 17.909 40 40 40 40-17.909 40-40z' fill='%231a4d2e' fill-opacity='0.03'/%3E%3C/svg%3E");
+        }
+
+        /* Smooth Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #faf9f6;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #1a4d2e, #7b2d2e);
+            border-radius: 6px;
+            border: 3px solid #faf9f6;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        /* Floating animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Image hover zoom */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+
+        .img-zoom-container img {
+            transition: transform 0.7s ease;
+        }
+
+        .img-zoom-container:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Seasonal Banner */
+        .seasonal-banner {
+            background: linear-gradient(90deg, #1a4d2e 0%, #0f172a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .seasonal-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+
+        /* PWA Prompt */
+        .pwa-prompt {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 16px 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            z-index: 50;
+            display: none;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translate(-50%, 100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+        }
+
+        /* Dark mode body */
+        .dark body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 6px;
+            z-index: 40;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        /* Loading skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, #e2e8f0 25%, #cbd5e1 50%, #e2e8f0 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+        }
+
+        @keyframes skeleton-loading {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Service modal */
+        .service-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .service-modal.active {
+            display: flex;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a4d2e;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 200;
+            display: none;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .toast.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-brand-cream text-brand-dark antialiased leaf-bg">
+
+    <!-- Seasonal Health Banner (New Feature) -->
+    <div id="seasonal-banner" class="seasonal-banner text-white py-3 px-4 relative z-40">
+        <div class="max-w-7xl mx-auto flex items-center justify-center gap-3 text-sm md:text-base relative z-10">
+            <span class="text-2xl animate-bounce" id="seasonal-icon">🌧️</span>
+            <p class="font-medium" id="seasonal-text">Monsoon Special: Boost immunity with Suvarnaprashan - 15% OFF!</p>
+            <button onclick="closeSeasonalBanner()"
+                class="absolute right-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-premium transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <!-- Logo Area -->
+                <div class="flex items-center gap-4">
+                    <div
+                        class="relative w-16 h-16 rounded-full shadow-lg overflow-hidden border-2 border-brand-gold/40">
+                        <!-- Advik Ayurveda Logo -->
+                        <img src="WhatsApp Image 2026-04-14 at 4.43.41 PM.jpeg" alt="Advik Ayurveda Logo"
+                            class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <div>
+                        <h1 class="font-display text-2xl font-bold text-brand-forest tracking-wide dark:text-white">
+                            Advik Ayurveda</h1>
+                        <p class="text-xs font-serif text-brand-maroon font-bold tracking-wider dark:text-brand-gold">
+                            અદ્વિક આયુર્વેદ ક્લિનિક</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#home"
+                        class="text-sm font-semibold text-brand-dark hover:text-brand-forest transition-colors dark:text-gray-300 dark:hover:text-white">Home</a>
+                    <a href="#about"
+                        class="text-sm font-semibold text-brand-dark hover:text-brand-forest transition-colors dark:text-gray-300 dark:hover:text-white">Doctor</a>
+                    <a href="#services"
+                        class="text-sm font-semibold text-brand-dark hover:text-brand-forest transition-colors dark:text-gray-300 dark:hover:text-white">Treatments</a>
+                    <a href="#reviews"
+                        class="text-sm font-semibold text-brand-dark hover:text-brand-forest transition-colors dark:text-gray-300 dark:hover:text-white">Reviews</a>
+                    <a href="#contact"
+                        class="text-sm font-semibold text-brand-dark hover:text-brand-forest transition-colors dark:text-gray-300 dark:hover:text-white">Contact</a>
+
+                    <!-- Dark Mode Toggle (New Feature) -->
+                    <button onclick="toggleDarkMode()"
+                        class="p-2 rounded-full hover:bg-brand-forest/10 transition-colors" title="Toggle Dark Mode">
+                        <i data-lucide="moon" class="w-5 h-5 text-brand-forest dark:text-white hidden dark:block"></i>
+                        <i data-lucide="sun" class="w-5 h-5 text-brand-forest block dark:hidden"></i>
+                    </button>
+
+                    <div class="flex gap-3 ml-4">
+                        <a href="https://wa.me/916354464304"
+                            class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-forest text-white text-sm font-semibold hover:bg-brand-dark transition-all shadow-lg hover:shadow-xl">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                        <a href="#appointment"
+                            class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-maroon text-white text-sm font-semibold hover:bg-brand-dark transition-all shadow-lg hover:shadow-xl btn-glow">
+                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                            <span>Book Now</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile Toggle -->
+                <div class="flex items-center gap-2 lg:hidden">
+                    <button onclick="toggleDarkMode()"
+                        class="p-2 rounded-full hover:bg-brand-forest/10 transition-colors">
+                        <i data-lucide="moon" class="w-5 h-5 text-brand-forest hidden dark:block"></i>
+                        <i data-lucide="sun" class="w-5 h-5 text-brand-forest block dark:hidden"></i>
+                    </button>
+                    <button class="p-2 text-brand-forest" onclick="toggleMenu()">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden lg:hidden bg-brand-cream border-t border-brand-gold/20 dark:bg-gray-900 dark:border-gray-700">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#home" class="block py-2 text-brand-dark font-medium dark:text-white">Home</a>
+                <a href="#about" class="block py-2 text-brand-dark font-medium dark:text-white">Doctor</a>
+                <a href="#services" class="block py-2 text-brand-dark font-medium dark:text-white">Treatments</a>
+                <a href="#appointment" class="block py-2 text-brand-forest font-bold">Book Appointment</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-sage/10 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right" data-aos-duration="1000">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-forest/10 text-brand-forest text-sm font-bold mb-6 border border-brand-forest/20 dark:text-brand-gold dark:border-brand-gold/20">
+                        <span class="w-2 h-2 rounded-full bg-brand-maroon animate-pulse"></span>
+                        સ્વસ્થ જીવનની શરૂઆત
+                    </div>
+
+                    <h1
+                        class="text-5xl lg:text-7xl font-display font-bold text-brand-forest leading-tight mb-6 text-shadow dark:text-white">
+                        Natural Healing <br>
+                        <span class="text-brand-maroon italic">For Modern Life</span>
+                    </h1>
+
+                    <p class="text-xl font-serif text-brand-forest/80 mb-4 dark:text-brand-gold">
+                        "પ્રકૃતિ સાથે સ્વસ્થ જીવનની શરૂઆત"
+                    </p>
+
+                    <p class="text-lg text-brand-dark/70 mb-8 max-w-xl leading-relaxed dark:text-gray-300">
+                        Experience authentic Ayurvedic treatments by Dr. K. D. Nakum (B.A.M.S.).
+                        Specialized in Agnikarma, Panchakarma, and chronic disease management with personalized care.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <div
+                            class="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-md border border-brand-gold/20 dark:bg-gray-800 dark:border-gray-600">
+                            <i data-lucide="check-circle" class="text-brand-forest w-5 h-5"></i>
+                            <span class="text-sm font-semibold dark:text-white">100% Natural</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-md border border-brand-gold/20 dark:bg-gray-800 dark:border-gray-600">
+                            <i data-lucide="shield" class="text-brand-forest w-5 h-5"></i>
+                            <span class="text-sm font-semibold dark:text-white">No Side Effects</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-md border border-brand-gold/20 dark:bg-gray-800 dark:border-gray-600">
+                            <i data-lucide="award" class="text-brand-forest w-5 h-5"></i>
+                            <span class="text-sm font-semibold dark:text-white">Certified B.A.M.S.</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#appointment"
+                            class="inline-flex items-center gap-3 bg-brand-forest text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-dark transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1">
+                            Book Appointment
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <button onclick="copyPhoneNumber()"
+                            class="inline-flex items-center gap-3 bg-white text-brand-forest border-2 border-brand-forest px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-forest/5 transition-all dark:bg-gray-800 dark:text-white dark:border-white">
+                            <i data-lucide="copy" class="w-5 h-5"></i>
+                            <span id="phone-text">6354464304</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="relative" data-aos="fade-left" data-aos-duration="1000">
+                    <div
+                        class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-700">
+                        <img src="kd.jpg.png" alt="Dr. K. D. Nakum - Advik Ayurveda"
+                            class="w-full h-[600px] object-cover object-top">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-brand-forest/60 via-transparent to-transparent">
+                        </div>
+
+                        <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                            <div class="glass-premium rounded-2xl p-6 text-brand-dark dark:text-white">
+                                <div class="flex items-center gap-4 mb-3">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-brand-forest text-white flex items-center justify-center font-bold text-xl">
+                                        Dr</div>
+                                    <div>
+                                        <p class="font-bold text-brand-forest text-lg dark:text-white">Dr. K. D. Nakum
+                                        </p>
+                                        <p class="text-sm text-brand-dark/70 dark:text-gray-300">B.A.M.S. Ayurvedic
+                                            Physician</p>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-brand-dark/80 italic dark:text-gray-300">"સ્વસ્થ જીવન માટે
+                                    પ્રકૃતિની શરણમાં"</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Stats -->
+                    <div class="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-brand-gold/20 animate-float dark:bg-gray-800 dark:border-gray-600"
+                        data-aos="zoom-in" data-aos-delay="300">
+                        <div class="text-center">
+                            <p class="text-3xl font-bold text-brand-forest dark:text-white">2+</p>
+                            <p class="text-xs text-brand-dark/60 dark:text-gray-400">Years Experience</p>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-20 -left-6 bg-brand-maroon text-white p-4 rounded-2xl shadow-xl animate-float"
+                        style="animation-delay: 1s;" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="flame" class="w-5 h-5"></i>
+                            <span class="font-bold">Agnikarma Specialist</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Doctor Section -->
+    <section id="about" class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-brand-gold/20 rounded-3xl transform rotate-3"></div>
+                        <img src="kd.jpg.png" alt="Dr. K. D. Nakum at Clinic"
+                            class="relative rounded-2xl shadow-2xl w-full object-cover object-top h-[500px]">
+                    </div>
+                </div>
+
+                <div data-aos="fade-left">
+                    <h2 class="text-brand-gold font-bold tracking-widest uppercase text-sm mb-2">About Doctor</h2>
+                    <h3 class="text-4xl font-display font-bold text-brand-forest mb-4 dark:text-white">Dr. K. D. Nakum
+                    </h3>
+                    <h4 class="text-xl font-serif text-brand-maroon mb-6">B.A.M.S. (Bachelor of Ayurvedic Medicine &
+                        Surgery)</h4>
+
+                    <div class="space-y-4 text-brand-dark/80 leading-relaxed mb-8 dark:text-gray-300">
+                        <p>
+                            Dr. K. D. Nakum is a dedicated Ayurvedic practitioner with 2+ years of clinical experience
+                            in traditional Ayurvedic treatments. Specializing in <strong>Agnikarma therapy</strong> for
+                            pain management
+                            and chronic conditions, he combines ancient wisdom with modern diagnostic approaches.
+                        </p>
+                        <p class="font-serif text-lg text-brand-forest dark:text-brand-gold">
+                            "રોગીને સંપૂર્ણ સારવાર અને સાચી માર્ગદર્શન આપવું એ જ મારો ધ્યેય છે."
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-brand-cream p-4 rounded-xl border border-brand-gold/20 dark:bg-gray-800 dark:border-gray-600 cursor-pointer hover:shadow-lg transition-all"
+                            onclick="showServiceDetail('agnikarma')">
+                            <i data-lucide="flame" class="text-brand-maroon w-8 h-8 mb-2"></i>
+                            <p class="font-bold text-brand-forest dark:text-white">Agnikarma Expert</p>
+                            <p class="text-sm text-brand-dark/60 dark:text-gray-400">Heat Therapy Specialist</p>
+                        </div>
+                        <div class="bg-brand-cream p-4 rounded-xl border border-brand-gold/20 dark:bg-gray-800 dark:border-gray-600 cursor-pointer hover:shadow-lg transition-all"
+                            onclick="showServiceDetail('panchakarma')">
+                            <i data-lucide="heart-pulse" class="text-brand-forest w-8 h-8 mb-2"></i>
+                            <p class="font-bold text-brand-forest dark:text-white">Panchakarma</p>
+                            <p class="text-sm text-brand-dark/60 dark:text-gray-400">Detox Specialist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Services -->
+    <section id="services" class="py-24 bg-brand-cream relative overflow-hidden dark:bg-gray-800">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-gold to-transparent">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-brand-maroon font-bold tracking-widest uppercase text-sm">Comprehensive Care</span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-brand-forest mt-2 mb-4 dark:text-white">Our
+                    Treatments</h2>
+                <h3 class="text-2xl font-serif text-brand-gold">સંપૂર્ણ આયુર્વેદિક સારવાર</h3>
+                <p class="mt-4 text-brand-dark/70 max-w-2xl mx-auto dark:text-gray-300">Specialized treatments for
+                    chronic and acute conditions using traditional Ayurvedic methods including Agnikarma, herbal
+                    medicines, and Panchakarma.</p>
+            </div>
+
+            <!-- Agnikarma Special -->
+            <div class="mb-16" data-aos="fade-up">
+                <div class="bg-gradient-to-r from-brand-maroon to-brand-maroon/90 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden cursor-pointer hover:shadow-3xl transition-all"
+                    onclick="showServiceDetail('agnikarma-special')">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="flame" class="w-8 h-8 text-brand-gold"></i>
+                            <h3 class="text-3xl font-display font-bold">Agnikarma (અગ્નિકર્મ)</h3>
+                            <span class="ml-auto text-sm bg-white/20 px-3 py-1 rounded-full">Click for details</span>
+                        </div>
+                        <p class="text-white/90 mb-6 max-w-3xl text-lg">
+                            Specialized heat therapy for instant pain relief. Effective for joint pain, muscle
+                            stiffness, and neurological conditions without surgery.
+                        </p>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div
+                                class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all">
+                                <h4 class="font-bold text-brand-gold mb-2">ગર્દન કમર-ઢીંચણ</h4>
+                                <p class="text-sm text-white/80">Neck, Back & Knee Pain</p>
+                            </div>
+                            <div
+                                class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all">
+                                <h4 class="font-bold text-brand-gold mb-2">નસના દુઃખાવા</h4>
+                                <p class="text-sm text-white/80">Neuralgia & Nerve Pain</p>
+                            </div>
+                            <div
+                                class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all">
+                                <h4 class="font-bold text-brand-gold mb-2">માથાના દુઃખાવા</h4>
+                                <p class="text-sm text-white/80">Migraine & Headache</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Respiratory -->
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg border-t-4 border-brand-forest dark:bg-gray-800 dark:border-t-4"
+                    data-aos="fade-up" data-aos-delay="0" onclick="showServiceDetail('respiratory')">
+                    <div
+                        class="w-14 h-14 rounded-full bg-brand-forest/10 flex items-center justify-center mb-6 text-brand-forest">
+                        <i data-lucide="wind" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold text-brand-forest mb-2 dark:text-white">Respiratory Care
+                    </h3>
+                    <h4 class="text-brand-maroon font-serif mb-4">શ્વસનતંત્રના રોગો</h4>
+                    <ul class="space-y-2 text-brand-dark/80 text-sm mb-4 dark:text-gray-300">
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span>
+                            <strong>શરદી-ખાંસી</strong> (Chronic Cold & Cough)
+                        </li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span>
+                            <strong>અસ્થमा</strong> (Asthma & Wheezing)
+                        </li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span>
+                            <strong>એલર્જી</strong> (Allergic Bronchitis)
+                        </li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span>
+                            <strong>સાઇનસાઇટિસ</strong> (Sinusitis)
+                        </li>
+                    </ul>
+                    <div class="pt-4 border-t border-brand-cream dark:border-gray-700">
+                        <p class="text-xs text-brand-dark/60 dark:text-gray-400"><span
+                                class="font-semibold text-brand-forest">Treatment:</span> Herbal steam, Nasya, Pranayama
+                        </p>
+                    </div>
+                    <button
+                        class="mt-4 text-sm text-brand-maroon font-semibold hover:text-brand-forest transition-colors">Learn
+                        more →</button>
+                </div>
+
+                <!-- Skin Diseases -->
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg border-t-4 border-brand-maroon dark:bg-gray-800"
+                    data-aos="fade-up" data-aos-delay="100" onclick="showServiceDetail('skin')">
+                    <div
+                        class="w-14 h-14 rounded-full bg-brand-maroon/10 flex items-center justify-center mb-6 text-brand-maroon">
+                        <i data-lucide="hand" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold text-brand-forest mb-2 dark:text-white">Skin Diseases
+                    </h3>
+                    <h4 class="text-brand-maroon font-serif mb-4">ચામડીના રોગો</h4>
+                    <ul class="space-y-2 text-brand-dark/80 text-sm mb-4 dark:text-gray-300">
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span>
+                            <strong>ધાદર</strong> (Psoriasis)
+                        </li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span>
+                            <strong>એક્ઝિમા</strong> (Eczema)
+                        </li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span> <strong>ખીલ,
+                                શિલી</strong> (Acne, Boils)</li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span> <strong>એલર્જી,
+                                ખંજવાળ</strong> (Allergic Rashes)</li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span> <strong>નખના
+                                રોગો</strong> (Nail Disorders)</li>
+                    </ul>
+                    <div class="pt-4 border-t border-brand-cream dark:border-gray-700">
+                        <p class="text-xs text-brand-dark/60 dark:text-gray-400"><span
+                                class="font-semibold text-brand-forest">Treatment:</span> Blood purification, Lepas,
+                            Raktmokshan</p>
+                    </div>
+                    <button
+                        class="mt-4 text-sm text-brand-maroon font-semibold hover:text-brand-forest transition-colors">Learn
+                        more →</button>
+                </div>
+
+                <!-- Children Diseases -->
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg border-t-4 border-brand-gold dark:bg-gray-800"
+                    data-aos="fade-up" data-aos-delay="200" onclick="showServiceDetail('children')">
+                    <div
+                        class="w-14 h-14 rounded-full bg-brand-gold/20 flex items-center justify-center mb-6 text-brand-gold">
+                        <i data-lucide="baby" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold text-brand-forest mb-2 dark:text-white">Pediatric Care
+                    </h3>
+                    <h4 class="text-brand-maroon font-serif mb-4">બાળકોમાં થતા રોગો</h4>
+                    <ul class="space-y-2 text-brand-dark/80 text-sm mb-4 dark:text-gray-300">
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span>
+                            <strong>સુવર્ણપ્રાશન</strong> (Immunity Booster)
+                        </li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span> <strong>ભૂખ ન
+                                લાગવી</strong> (Poor Appetite)</li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span>
+                            <strong>કુપોષણ</strong> (Malnutrition)
+                        </li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span>
+                            <strong>શારીરિક-માનસિક વિકાસ</strong> (Growth Issues)
+                        </li>
+                    </ul>
+                    <div class="pt-4 border-t border-brand-cream dark:border-gray-700">
+                        <p class="text-xs text-brand-dark/60 dark:text-gray-400"><span
+                                class="font-semibold text-brand-forest">Treatment:</span> Swarnaprashan, Bal Rasayan</p>
+                    </div>
+                    <button
+                        class="mt-4 text-sm text-brand-maroon font-semibold hover:text-brand-forest transition-colors">Learn
+                        more →</button>
+                </div>
+
+                <!-- Piles/Fissure -->
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg border-t-4 border-brand-forest dark:bg-gray-800"
+                    data-aos="fade-up" data-aos-delay="300" onclick="showServiceDetail('piles')">
+                    <div
+                        class="w-14 h-14 rounded-full bg-brand-forest/10 flex items-center justify-center mb-6 text-brand-forest">
+                        <i data-lucide="activity" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold text-brand-forest mb-2 dark:text-white">Anorectal
+                        Disorders</h3>
+                    <h4 class="text-brand-maroon font-serif mb-4">હરસ-મસા-ભગંદર</h4>
+                    <ul class="space-y-2 text-brand-dark/80 text-sm mb-4 dark:text-gray-300">
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span>
+                            <strong>અંદરથી-બહારથી મસા</strong> (Piles)
+                        </li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span> <strong>ફિશર
+                                (દરાડ)</strong> (Fissure)</li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span>
+                            <strong>ભગંદર</strong> (Fistula)
+                        </li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span>
+                            <strong>આયુર્વેદિક દવાથી ઓપરેશન વગર</strong> (Non-surgical)
+                        </li>
+                    </ul>
+                    <div class="pt-4 border-t border-brand-cream dark:border-gray-700">
+                        <p class="text-xs text-brand-dark/60 dark:text-gray-400"><span
+                                class="font-semibold text-brand-forest">Treatment:</span> Ksharsutra, Herbal remedies
+                        </p>
+                    </div>
+                    <button
+                        class="mt-4 text-sm text-brand-maroon font-semibold hover:text-brand-forest transition-colors">Learn
+                        more →</button>
+                </div>
+
+                <!-- Stomach/Digestive -->
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg border-t-4 border-brand-maroon dark:bg-gray-800"
+                    data-aos="fade-up" data-aos-delay="400" onclick="showServiceDetail('digestive')">
+                    <div
+                        class="w-14 h-14 rounded-full bg-brand-maroon/10 flex items-center justify-center mb-6 text-brand-maroon">
+                        <i data-lucide="utensils" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold text-brand-forest mb-2 dark:text-white">Digestive
+                        Disorders</h3>
+                    <h4 class="text-brand-maroon font-serif mb-4">પેટદદ સંબંધિત સમસ્યાઓ</h4>
+                    <ul class="space-y-2 text-brand-dark/80 text-sm mb-4 dark:text-gray-300">
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span> <strong>ગેસ,
+                                એસિડિટી</strong> (Acidity & Gas)</li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span> <strong>બળતરા,
+                                અપચો</strong> (Indigestion)</li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span>
+                            <strong>કબજિયાત</strong> (Constipation)
+                        </li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span> <strong>પેટના
+                                દુઃખાવા</strong> (Abdominal Pain)</li>
+                    </ul>
+                    <div class="pt-4 border-t border-brand-cream dark:border-gray-700">
+                        <p class="text-xs text-brand-dark/60 dark:text-gray-400"><span
+                                class="font-semibold text-brand-forest">Treatment:</span> Deepan, Pachan, Diet therapy
+                        </p>
+                    </div>
+                    <button
+                        class="mt-4 text-sm text-brand-maroon font-semibold hover:text-brand-forest transition-colors">Learn
+                        more →</button>
+                </div>
+
+                <!-- Women Health -->
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg border-t-4 border-brand-gold dark:bg-gray-800"
+                    data-aos="fade-up" data-aos-delay="500" onclick="showServiceDetail('women')">
+                    <div
+                        class="w-14 h-14 rounded-full bg-brand-gold/20 flex items-center justify-center mb-6 text-brand-gold">
+                        <i data-lucide="heart" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold text-brand-forest mb-2 dark:text-white">Women's Health
+                    </h3>
+                    <h4 class="text-brand-maroon font-serif mb-4">સ્ત્રી રોગ</h4>
+                    <ul class="space-y-2 text-brand-dark/80 text-sm mb-4 dark:text-gray-300">
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span> <strong>PCOD &
+                                PCOS</strong></li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span> <strong>અનિયમિત
+                                માસિક</strong> (Irregular Periods)</li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span> <strong>સફેદ પાણી
+                                પડવું</strong> (Leucorrhea)</li>
+                        <li class="flex items-start gap-2"><span class="text-brand-gold mt-1">•</span> <strong>ગર્ભાશય
+                                સંબંધિત</strong> (Uterine Issues)</li>
+                    </ul>
+                    <div class="pt-4 border-t border-brand-cream dark:border-gray-700">
+                        <p class="text-xs text-brand-dark/60 dark:text-gray-400"><span
+                                class="font-semibold text-brand-forest">Treatment:</span> Yoni Prakshalan, Uttar Basti
+                        </p>
+                    </div>
+                    <button
+                        class="mt-4 text-sm text-brand-maroon font-semibold hover:text-brand-forest transition-colors">Learn
+                        more →</button>
+                </div>
+            </div>
+
+            <!-- Diabetes/BP/Lifestyle -->
+            <div class="mt-12 card-hover bg-gradient-to-br from-brand-forest to-brand-forest/90 rounded-2xl p-8 md:p-12 text-white shadow-xl dark:from-brand-forest dark:to-brand-forest/80"
+                data-aos="fade-up" onclick="showServiceDetail('lifestyle')">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-3xl font-display font-bold mb-4">Lifestyle Diseases</h3>
+                        <h4 class="text-brand-gold font-serif text-xl mb-6">ડાયાબિટીસ, બી.પી. અને હૃદય રોગ</h4>
+                        <ul class="space-y-3 text-white/90">
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                    class="w-5 h-5 text-brand-gold"></i> Diabetes Management (મધુમેહ)</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                    class="w-5 h-5 text-brand-gold"></i> Blood Pressure Control (ઉચ્ચ રક્તદાબ)</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                    class="w-5 h-5 text-brand-gold"></i> Thyroid Disorders</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle"
+                                    class="w-5 h-5 text-brand-gold"></i> Heart Care (હૃદય સંભાળ)</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all cursor-pointer">
+                        <p class="text-lg mb-4">આયુર્વેદિક સારવાર અને માર્ગદર્શન દ્વારા જીવનશૈલીમાં સુધારો</p>
+                        <span class="inline-flex items-center gap-2 text-brand-gold font-bold">Click for details <i
+                                data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl font-display font-bold text-brand-forest mb-2 dark:text-white">Clinic Gallery</h2>
+                <h3 class="text-xl font-serif text-brand-maroon">ક્લિનિક ગેલેરી</h3>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="img-zoom-container rounded-2xl overflow-hidden shadow-lg aspect-square cursor-pointer"
+                    data-aos="zoom-in" data-aos-delay="0" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&auto=format&fit=crop&q=80"
+                        alt="Clinic Reception" class="w-full h-full object-cover">
+                </div>
+                <div class="img-zoom-container rounded-2xl overflow-hidden shadow-lg aspect-square cursor-pointer"
+                    data-aos="zoom-in" data-aos-delay="100" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1544367563-12123d8965cd?w=600&auto=format&fit=crop&q=80"
+                        alt="Treatment Room" class="w-full h-full object-cover">
+                </div>
+                <div class="img-zoom-container rounded-2xl overflow-hidden shadow-lg aspect-square cursor-pointer"
+                    data-aos="zoom-in" data-aos-delay="200" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1600334089648-b0c9d5b66f88?w=600&auto=format&fit=crop&q=80"
+                        alt="Medicines" class="w-full h-full object-cover">
+                </div>
+                <div class="img-zoom-container rounded-2xl overflow-hidden shadow-lg aspect-square cursor-pointer"
+                    data-aos="zoom-in" data-aos-delay="300" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&auto=format&fit=crop&q=80"
+                        alt="Therapy" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-20 bg-brand-cream dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl font-display font-bold text-brand-forest mb-2 dark:text-white">Patient Reviews</h2>
+                <h3 class="text-xl font-serif text-brand-maroon">રોગીના અભિપ્રાય</h3>
+            </div>
+
+            <!-- Add Review Form -->
+            <div class="max-w-2xl mx-auto mb-12 bg-white rounded-2xl p-8 shadow-lg border border-brand-gold/20 dark:bg-gray-800 dark:border-gray-700"
+                data-aos="fade-up">
+                <h4 class="text-xl font-bold text-brand-forest mb-4 flex items-center gap-2 dark:text-white">
+                    <i data-lucide="pen-tool" class="w-5 h-5 text-brand-maroon"></i>
+                    Write a Review / અભિપ્રાય લખો
+                </h4>
+                <form id="reviewForm" class="space-y-4">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <input type="text" id="reviewerName" required placeholder="Your Name"
+                            class="w-full px-4 py-3 rounded-xl border border-brand-cream bg-brand-cream focus:bg-white focus:border-brand-forest outline-none transition-all dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        <select id="reviewerRating" required
+                            class="w-full px-4 py-3 rounded-xl border border-brand-cream bg-brand-cream focus:bg-white focus:border-brand-forest outline-none transition-all dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                            <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
+                            <option value="4">⭐⭐⭐⭐ (4 Stars)</option>
+                            <option value="3">⭐⭐⭐ (3 Stars)</option>
+                        </select>
+                    </div>
+                    <textarea id="reviewerText" required rows="3" placeholder="Share your experience..."
+                        class="w-full px-4 py-3 rounded-xl border border-brand-cream bg-brand-cream focus:bg-white focus:border-brand-forest outline-none transition-all resize-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+                    <button type="submit"
+                        class="w-full bg-brand-forest text-white font-bold py-3 rounded-xl hover:bg-brand-dark transition-all shadow-lg">
+                        Submit Review
+                    </button>
+                </form>
+            </div>
+
+            <!-- Reviews Grid -->
+            <div class="grid md:grid-cols-3 gap-6" id="reviewsContainer">
+                <!-- Default Reviews -->
+                <div class="bg-white rounded-2xl p-6 shadow-md border-l-4 border-brand-gold dark:bg-gray-800"
+                    data-aos="fade-up">
+                    <div class="flex text-brand-gold mb-3">⭐⭐⭐⭐⭐</div>
+                    <p class="text-brand-dark/80 mb-4 italic dark:text-gray-300">"અગ્નિકર્મ થેરાપીથી મારી ગાદની ગાંઠોનો
+                        દુઃખાવો એકદમ ગાયબ થઈ ગયો. ડોક્ટર સાહેબ ખૂબ સારી રીતે સમજાવે છે."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-brand-forest text-white flex items-center justify-center font-bold">
+                            M</div>
+                        <div>
+                            <p class="font-bold text-brand-forest dark:text-white">Mahesh Patel</p>
+                            <p class="text-xs text-brand-dark/50 dark:text-gray-400">Sutrapada</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-md border-l-4 border-brand-forest dark:bg-gray-800"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex text-brand-gold mb-3">⭐⭐⭐⭐⭐</div>
+                    <p class="text-brand-dark/80 mb-4 italic dark:text-gray-300">"My PCOD problem is much better after 3
+                        months of treatment. No side effects like allopathic medicines. Highly recommended!"</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-brand-maroon text-white flex items-center justify-center font-bold">
+                            P</div>
+                        <div>
+                            <p class="font-bold text-brand-forest dark:text-white">Priya Sharma</p>
+                            <p class="text-xs text-brand-dark/50 dark:text-gray-400">Kodinar</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-md border-l-4 border-brand-maroon dark:bg-gray-800"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex text-brand-gold mb-3">⭐⭐⭐⭐⭐</div>
+                    <p class="text-brand-dark/80 mb-4 italic dark:text-gray-300">"બાળકને સુવર્ણપ્રાશન કરાવ્યું પછી
+                        રોગપ્રતિકારક શક્તિમાં ખૂબ સુધારો થયો. ખૂબ આભાર."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-brand-gold text-white flex items-center justify-center font-bold">
+                            K</div>
+                        <div>
+                            <p class="font-bold text-brand-forest dark:text-white">Kamlesh Joshi</p>
+                            <p class="text-xs text-brand-dark/50 dark:text-gray-400">Veraval</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section id="appointment" class="py-20 bg-brand-forest relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0"
+                style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl font-display font-bold text-white mb-2">Book Appointment</h2>
+                <h3 class="text-xl font-serif text-brand-gold">તારીફ બુક કરો</h3>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl dark:bg-gray-800" data-aos="zoom-in">
+                <form id="whatsappForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-brand-forest mb-2 dark:text-white">Full Name
+                                *</label>
+                            <input type="text" id="patientName" required
+                                class="w-full px-4 py-3 rounded-xl border border-brand-cream bg-brand-cream focus:bg-white focus:border-brand-forest outline-none transition-all dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                placeholder="Your full name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-brand-forest mb-2 dark:text-white">Age *</label>
+                            <input type="number" id="patientAge" required min="1" max="120"
+                                class="w-full px-4 py-3 rounded-xl border border-brand-cream bg-brand-cream focus:bg-white focus:border-brand-forest outline-none transition-all dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                placeholder="Age">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-brand-forest mb-2 dark:text-white">Health Problem /
+                            Disease *</label>
+                        <textarea id="healthProblem" required rows="3"
+                            class="w-full px-4 py-3 rounded-xl border border-brand-cream bg-brand-cream focus:bg-white focus:border-brand-forest outline-none transition-all resize-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                            placeholder="Describe your symptoms (e.g., back pain, skin allergy, etc.)"></textarea>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-brand-forest mb-2 dark:text-white">Date *</label>
+                            <input type="date" id="appointmentDate" required
+                                class="w-full px-4 py-3 rounded-xl border border-brand-cream bg-brand-cream focus:bg-white focus:border-brand-forest outline-none transition-all dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-brand-forest mb-2 dark:text-white">Time Slot
+                                *</label>
+                            <select id="appointmentTime" required
+                                class="w-full px-4 py-3 rounded-xl border border-brand-cream bg-brand-cream focus:bg-white focus:border-brand-forest outline-none transition-all dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                <option value="">Select Time</option>
+                                <optgroup label="Morning Session (8 AM - 1 PM)">
+                                    <option value="08:00 AM">08:00 AM</option>
+                                    <option value="09:00 AM">09:00 AM</option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="11:00 AM">11:00 AM</option>
+                                    <option value="12:00 PM">12:00 PM</option>
+                                </optgroup>
+                                <optgroup label="Evening Session (3 PM - 9 PM)">
+                                    <option value="03:00 PM">03:00 PM</option>
+                                    <option value="04:00 PM">04:00 PM</option>
+                                    <option value="05:00 PM">05:00 PM</option>
+                                    <option value="06:00 PM">06:00 PM</option>
+                                    <option value="07:00 PM">07:00 PM</option>
+                                    <option value="08:00 PM">08:00 PM</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-brand-cream p-4 rounded-xl border border-brand-gold/20 dark:bg-gray-700 dark:border-gray-600">
+                        <p class="text-sm text-brand-dark/80 flex items-center gap-2 dark:text-gray-300">
+                            <i data-lucide="clock" class="w-4 h-4 text-brand-maroon"></i>
+                            <span><strong>Clinic Hours:</strong> Morning 8 AM - 1 PM | Evening 3 PM - 9 PM | Sunday
+                                Closed</span>
+                        </p>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-brand-maroon text-white font-bold py-4 rounded-xl hover:bg-brand-dark transition-all shadow-xl flex items-center justify-center gap-3 text-lg">
+                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                        <span>Book via WhatsApp</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="py-20 bg-brand-cream dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl font-display font-bold text-brand-forest mb-2 dark:text-white">Our Location</h2>
+                <h3 class="text-xl font-serif text-brand-maroon">અમારું સ્થાન</h3>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-700"
+                    data-aos="fade-up">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3709.739123456789!2d70.8566558!3d20.8380556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDUwJzE3LjAiTiA3MMKwNTEnMjQuMCJF!5e0!3m2!1sen!2sin!4v1234567890000!5m2!1sen!2sin"
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-brand-gold/20 dark:bg-gray-800 dark:border-gray-700"
+                    data-aos="fade-up">
+                    <h4 class="text-2xl font-display font-bold text-brand-forest mb-6 dark:text-white">Contact Info</h4>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-brand-forest/10 flex items-center justify-center text-brand-forest flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-brand-forest mb-1 dark:text-white">Address</p>
+                                <p class="text-sm text-brand-dark/70 dark:text-gray-300">
+                                    Dhamlej, near Bajarang Studio,<br>
+                                    Kodinar–Veraval Highway,<br>
+                                    Sutrapada, Gir Somnath – 362275
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-brand-maroon/10 flex items-center justify-center text-brand-maroon flex-shrink-0">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-brand-forest mb-1 dark:text-white">Phone</p>
+                                <button onclick="copyPhoneNumber()"
+                                    class="text-2xl font-bold text-brand-maroon hover:text-brand-forest transition-colors text-left">
+                                    6354464304
+                                    <span class="text-xs block text-brand-gold">Click to copy</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold flex-shrink-0">
+                                <i data-lucide="clock" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-brand-forest mb-1 dark:text-white">Working Hours</p>
+                                <p class="text-sm text-brand-dark/70 dark:text-gray-300">Mon - Sat: 8 AM - 1 PM & 3 PM -
+                                    9 PM</p>
+                                <p class="text-sm text-brand-maroon font-semibold">Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-brand-cream dark:border-gray-700">
+                        <p class="text-sm text-brand-dark/60 mb-4 dark:text-gray-400">Follow us on social media:</p>
+                        <div class="flex gap-4">
+                            <a href="https://wa.me/916354464304" target="_blank"
+                                class="flex-1 bg-green-500 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold hover:bg-green-600 transition-all">
+                                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                                WhatsApp
+                            </a>
+                            <a href="#" target="_blank"
+                                class="flex-1 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold hover:opacity-90 transition-all">
+                                <i data-lucide="instagram" class="w-5 h-5"></i>
+                                Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-gold/20 flex items-center justify-center">
+                            <i data-lucide="leaf" class="w-6 h-6 text-brand-gold"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold">Advik Ayurveda</h3>
+                            <p class="text-xs text-brand-gold font-serif">અદ્વિક આયુર્વેદ ક્લિનિક</p>
+                        </div>
+                    </div>
+                    <p class="text-white/70 mb-6 max-w-md">
+                        Authentic Ayurvedic treatments for holistic healing.
+                        Specialized in Agnikarma, Panchakarma, and chronic disease management.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://wa.me/916354464304" target="_blank"
+                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-500 transition-all">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-pink-500 transition-all">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-500 transition-all">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-brand-gold">Quick Links</h4>
+                    <ul class="space-y-2 text-white/70">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About Doctor</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Treatments</a></li>
+                        <li><a href="#appointment" class="hover:text-white transition-colors">Book Appointment</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-brand-gold">Contact</h4>
+                    <ul class="space-y-3 text-white/70 text-sm">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="user" class="w-4 h-4 text-brand-gold"></i>
+                            Dr. K. D. Nakum (B.A.M.S.)
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-4 h-4 text-brand-gold"></i>
+                            6354464304
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-gold mt-1"></i>
+                            <span>Dhamlej, Sutrapada,<br>Gir Somnath - 362275</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white/50 text-sm">&copy; 2026 Advik Ayurveda Clinic. All rights reserved.</p>
+                <p class="text-white/50 text-sm flex items-center gap-2">
+                    <i data-lucide="heart" class="w-4 h-4 text-brand-maroon"></i>
+                    Made with care for your health
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/916354464304?text=Hello%20Doctor,%20I%20want%20to%20book%20an%20appointment"
+        class="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 animate-float flex items-center justify-center"
+        target="_blank" data-aos="zoom-in" data-aos-delay="1000">
+        <i data-lucide="message-circle" class="w-7 h-7"></i>
+    </a>
+
+    <!-- Back to Top Button (New Feature) -->
+    <button onclick="scrollToTop()" id="backToTop"
+        class="back-to-top fixed bottom-24 right-6 bg-brand-forest text-white p-3 rounded-full shadow-lg hover:bg-brand-dark transition-all">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+
+    <!-- Toast Notification (New Feature) -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Service Detail Modal (New Feature) -->
+    <div id="serviceModal" class="service-modal" onclick="if(event.target === this) closeServiceModal()">
+        <div class="bg-white rounded-2xl p-8 max-w-lg w-full mx-4 shadow-2xl dark:bg-gray-800 dark:text-white">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modalTitle" class="text-2xl font-bold text-brand-forest dark:text-white">Service Details</h3>
+                <button onclick="closeServiceModal()" class="text-gray-500 hover:text-brand-maroon">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div id="modalContent" class="text-brand-dark/80 dark:text-gray-300">
+                <!-- Content injected via JS -->
+            </div>
+            <a href="#appointment" onclick="closeServiceModal()"
+                class="mt-6 block w-full bg-brand-forest text-white text-center py-3 rounded-xl font-bold hover:bg-brand-dark transition-all">
+                Book This Treatment
+            </a>
+        </div>
+    </div>
+
+    <!-- PWA Install Prompt (New Feature) -->
+    <div id="pwaPrompt" class="pwa-prompt">
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-brand-forest flex items-center justify-center">
+                <i data-lucide="download" class="text-white w-6 h-6"></i>
+            </div>
+            <div>
+                <p class="font-bold text-gray-900">Install Advik Ayurveda</p>
+                <p class="text-sm text-gray-600">Add to home screen for quick access</p>
+            </div>
+            <button onclick="installPWA()"
+                class="bg-brand-forest text-white px-4 py-2 rounded-lg font-medium">Install</button>
+            <button onclick="closePWAPrompt()" class="text-gray-400 hover:text-gray-600">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Icons and AOS
+        lucide.createIcons();
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Dark Mode Toggle (New Feature)
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        // Check saved theme
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+
+        // Set Today's Date as Default
+        document.getElementById('appointmentDate').valueAsDate = new Date();
+
+        // Seasonal Banner Rotation (New Feature)
+        const seasonalMessages = [
+            { icon: '🌧️', text: 'Monsoon Special: Boost immunity with Suvarnaprashan - 15% OFF!' },
+            { icon: '🌸', text: 'Sharad Ritu: Detox with Panchakarma. Book your consultation!' },
+            { icon: '❄️', text: 'Winter Care: Joint pain increasing? Try Agnikarma therapy!' },
+            { icon: '☀️', text: 'Summer Tips: Stay cool with Ayurvedic drinks. Download free guide!' }
+        ];
+
+        let currentSeason = 0;
+        setInterval(() => {
+            currentSeason = (currentSeason + 1) % seasonalMessages.length;
+            document.getElementById('seasonal-icon').textContent = seasonalMessages[currentSeason].icon;
+            document.getElementById('seasonal-text').textContent = seasonalMessages[currentSeason].text;
+        }, 5000);
+
+        function closeSeasonalBanner() {
+            document.getElementById('seasonal-banner').style.display = 'none';
+            localStorage.setItem('bannerClosed', 'true');
+        }
+
+        if (localStorage.getItem('bannerClosed')) {
+            document.getElementById('seasonal-banner').style.display = 'none';
+        }
+
+        // Copy Phone Number (New Feature)
+        function copyPhoneNumber() {
+            navigator.clipboard.writeText('6354464304').then(() => {
+                showToast('Phone number copied to clipboard!');
+            }).catch(() => {
+                showToast('Failed to copy number');
+            });
+        }
+
+        // Toast Notification (New Feature)
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Back to Top Button (New Feature)
+        window.addEventListener('scroll', () => {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            // Sticky Header Shadow
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Service Detail Modal (New Feature)
+        const serviceDetails = {
+            'agnikarma': {
+                title: 'Agnikarma Therapy',
+                content: '<p class="mb-4">Agnikarma is a specialized Ayurvedic heat therapy that provides instant relief from chronic pain. Using thermal cautery, it stimulates specific points to relieve:</p><ul class="list-disc pl-5 space-y-2"><li>Chronic back pain</li><li>Knee joint pain</li><li>Migraine headaches</li><li>Neuralgia</li><li>Muscle stiffness</li></ul><p class="mt-4">Treatment duration: 15-30 minutes per session. Usually requires 3-5 sessions for complete relief.</p>'
+            },
+            'panchakarma': {
+                title: 'Panchakarma Detox',
+                content: '<p class="mb-4">Panchakarma is a comprehensive detoxification therapy that removes toxins from the body through five therapeutic procedures:</p><ul class="list-disc pl-5 space-y-2"><li><strong>Vamana:</strong> Therapeutic vomiting</li><li><strong>Virechana:</strong> Purgation</li><li><strong>Basti:</strong> Medicated enema</li><li><strong>Nasya:</strong> Nasal administration</li><li><strong>Raktamokshana:</strong> Bloodletting</li></ul><p class="mt-4">Recommended for chronic diseases, weight management, and overall rejuvenation.</p>'
+            },
+            'respiratory': {
+                title: 'Respiratory Care',
+                content: '<p class="mb-4">Our respiratory treatments focus on strengthening lungs and clearing airways using:</p><ul class="list-disc pl-5 space-y-2"><li>Herbal steam inhalation</li><li>Nasya therapy (nasal drops)</li><li>Pranayama techniques</li><li>Customized herbal preparations</li></ul><p class="mt-4">Effective for asthma, chronic cough, sinusitis, and allergic bronchitis.</p>'
+            },
+            'skin': {
+                title: 'Skin Disease Treatment',
+                content: '<p class="mb-4">Ayurvedic skin treatments focus on blood purification and internal detoxification:</p><ul class="list-disc pl-5 space-y-2"><li>Raktamokshana (bloodletting)</li><li>Herbal lepas (pastes)</li><li>Medicated baths</li><li>Dietary modifications</li></ul><p class="mt-4">Treats psoriasis, eczema, acne, and allergic conditions without steroids.</p>'
+            },
+            'children': {
+                title: 'Pediatric Care (Suvarnaprashan)',
+                content: '<p class="mb-4">Suvarnaprashan is an Ayurvedic immunization program for children:</p><ul class="list-disc pl-5 space-y-2"><li>Boosts immunity</li><li>Enhances memory and IQ</li><li>Improves digestion</li><li>Supports physical growth</li></ul><p class="mt-4">Recommended monthly for children aged 0-16 years, especially on Pushya Nakshatra days.</p>'
+            },
+            'piles': {
+                title: 'Piles & Fissure Treatment',
+                content: '<p class="mb-4">Non-surgical treatment for anorectal conditions using:</p><ul class="list-disc pl-5 space-y-2"><li>Ksharsutra therapy</li><li>Ayurvedic medicines</li><li>Dietary management</li><li>Sitz baths</li></ul><p class="mt-4">Avoids surgery in 90% of cases. Complete cure within 2-4 weeks.</p>'
+            },
+            'digestive': {
+                title: 'Digestive Disorders',
+                content: '<p class="mb-4">Comprehensive GI treatments including:</p><ul class="list-disc pl-5 space-y-2"><li>Deepan-Pachan (digestive stimulants)</li><li>Customized diet plans</li><li>Panchakarma if needed</li><li>Stress management</li></ul><p class="mt-4">Effective for acidity, gas, IBS, constipation, and liver disorders.</p>'
+            },
+            'women': {
+                title: 'Women\'s Health',
+                content: '<p class="mb-4">Specialized gynecological treatments:</p><ul class="list-disc pl-5 space-y-2"><li>PCOS/PCOD management</li><li>Menstrual irregularities</li><li>Leucorrhea treatment</li><li>Uterine tonics</li><li>Pre and post-natal care</li></ul><p class="mt-4">Hormone-free treatments using Ayurvedic herbs and therapies.</p>'
+            },
+            'lifestyle': {
+                title: 'Lifestyle Disease Management',
+                content: '<p class="mb-4">Chronic disease management through:</p><ul class="list-disc pl-5 space-y-2"><li>Diabetes reversal program</li><li>Hypertension management</li><li>Thyroid balance</li><li>Heart health support</li></ul><p class="mt-4">Includes diet, exercise, meditation, and herbal medicines. Regular monitoring required.</p>'
+            },
+            'agnikarma-special': {
+                title: 'Agnikarma - Special Therapy',
+                content: '<p class="mb-4">Our signature treatment for instant pain relief. The doctor uses thermal cautery at specific marma points to:</p><ul class="list-disc pl-5 space-y-2"><li>Block pain signals immediately</li><li>Improve blood circulation</li><li>Reduce inflammation</li><li>Promote natural healing</li></ul><p class="mt-4 font-bold text-brand-maroon">Success rate: 95% for chronic pain cases</p>'
+            }
+        };
+
+        function showServiceDetail(service) {
+            const modal = document.getElementById('serviceModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+
+            if (serviceDetails[service]) {
+                title.textContent = serviceDetails[service].title;
+                content.innerHTML = serviceDetails[service].content;
+                modal.classList.add('active');
+                lucide.createIcons();
+            }
+        }
+
+        function closeServiceModal() {
+            document.getElementById('serviceModal').classList.remove('active');
+        }
+
+        // Review System with Confetti (Enhanced)
+        document.getElementById('reviewForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('reviewerName').value;
+            const rating = document.getElementById('reviewerRating').value;
+            const text = document.getElementById('reviewerText').value;
+
+            // Confetti celebration (New Feature)
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#1a4d2e', '#c9a227', '#7b2d2e']
+            });
+
+            const stars = '⭐'.repeat(parseInt(rating));
+
+            const reviewDiv = document.createElement('div');
+            reviewDiv.className = 'bg-white rounded-2xl p-6 shadow-md border-l-4 border-brand-forest dark:bg-gray-800 fade-in';
+            reviewDiv.innerHTML = `
+                <div class="flex text-brand-gold mb-3">${stars}</div>
+                <p class="text-brand-dark/80 mb-4 italic dark:text-gray-300">"${text}"</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-brand-forest text-white flex items-center justify-center font-bold">${name.charAt(0).toUpperCase()}</div>
+                    <div>
+                        <p class="font-bold text-brand-forest dark:text-white">${name}</p>
+                        <p class="text-xs text-brand-dark/50 dark:text-gray-400">Just now</p>
+                    </div>
+                </div>
+            `;
+
+            const container = document.getElementById('reviewsContainer');
+            container.insertBefore(reviewDiv, container.firstChild);
+
+            this.reset();
+            showToast('Thank you for your review! 🙏');
+        });
+
+        // WhatsApp Booking with Loading State (Enhanced)
+        document.getElementById('whatsappForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i data-lucide="loader" class="w-6 h-6 animate-spin"></i> Sending...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                const name = document.getElementById('patientName').value.trim();
+                const age = document.getElementById('patientAge').value;
+                const problem = document.getElementById('healthProblem').value.trim();
+                const date = document.getElementById('appointmentDate').value;
+                const time = document.getElementById('appointmentTime').value;
+
+                const message = `*New Appointment Request - Advik Ayurveda Clinic*%0A%0A` +
+                    `👤 *Name:* ${name}%0A` +
+                    `🎂 *Age:* ${age}%0A` +
+                    `🩺 *Problem:* ${problem}%0A` +
+                    `📅 *Date:* ${date}%0A` +
+                    `⏰ *Time:* ${time}%0A%0A` +
+                    `Please confirm my appointment. Thank you! 🙏`;
+
+                window.open(`https://wa.me/916354464304?text=${message}`, '_blank');
+
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                lucide.createIcons();
+
+                // Confetti for successful booking
+                confetti({
+                    particleCount: 150,
+                    spread: 100,
+                    origin: { y: 0.8 },
+                    colors: ['#1a4d2e', '#c9a227', '#7b2d2e']
+                });
+
+                showToast('Opening WhatsApp...');
+            }, 1000);
+        });
+
+        // Lightbox for Gallery
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const src = img.src;
+
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 cursor-zoom-out';
+            modal.innerHTML = `<img src="${src}" class="max-w-full max-h-full rounded-lg shadow-2xl" />`;
+
+            modal.onclick = () => modal.remove();
+            document.body.appendChild(modal);
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // PWA Install Prompt (New Feature)
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            setTimeout(() => {
+                if (!localStorage.getItem('pwaInstalled')) {
+                    document.getElementById('pwaPrompt').style.display = 'block';
+                }
+            }, 3000);
+        });
+
+        function installPWA() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        localStorage.setItem('pwaInstalled', 'true');
+                        showToast('App installed successfully!');
+                    }
+                    document.getElementById('pwaPrompt').style.display = 'none';
+                });
+            }
+        }
+
+        function closePWAPrompt() {
+            document.getElementById('pwaPrompt').style.display = 'none';
+        }
+
+        // Offline Detection (New Feature)
+        window.addEventListener('offline', () => {
+            showToast('You are offline. Some features may not work.');
+        });
+
+        window.addEventListener('online', () => {
+            showToast('You are back online!');
+        });
+    </script>
+</body>
+
+</html>
