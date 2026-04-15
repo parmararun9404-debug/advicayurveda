@@ -1,0 +1,27 @@
+# Ignored files
+
+# Node modules
+node_modules/
+
+# Distribution folder
+/dist/
+
+# Zip files
+*.zip
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+
+# IDE files
+.idea/
+.vscode/
+
+# Gradle build files
+.gradle/
