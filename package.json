@@ -1,15 +1,14 @@
 {
     "name": "advik-ayurveda",
     "version": "1.0.0",
-    "description": "Advik Ayurveda Clinic Mobile App",
+    "description": "Advik Ayurveda Clinic - Professional PWA & Android Application",
     "main": "index.html",
     "scripts": {
+        "start": "python -m http.server 3000",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "cap:init": "cap init AdvikAyurveda com.advikayurveda.clinic --web-dir .",
-        "cap:add:android": "cap add android",
+        "cap:init": "cap init AdvikAyurveda com.advikayurveda.clinic --web-dir www",
         "cap:sync": "cap sync",
-        "cap:open": "cap open android",
-        "build:android": "npm run cap:sync && npm run cap:open"
+        "cap:open": "cap open android"
     },
     "keywords": [
         "ayurveda",
