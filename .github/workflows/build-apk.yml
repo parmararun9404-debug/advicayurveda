@@ -31,7 +31,7 @@ jobs:
       run: |
         mkdir www
         # Copy web files to the www directory for Capacitor
-        cp kd.html www/
+        cp index.html www/
         cp offline.html www/
         cp doctor.png www/
         cp logo.jpeg www/

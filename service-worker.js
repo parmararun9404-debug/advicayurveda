@@ -1,7 +1,7 @@
 // Advik Ayurveda Clinic - Service Worker
 const CACHE_NAME = 'advik-ayurveda-v1';
 const urlsToCache = [
-  '/kd.html',
+  '/index.html',
   '/offline.html',
   '/doctor.png',
   '/logo.jpeg',

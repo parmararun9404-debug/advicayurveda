@@ -2,7 +2,7 @@
   "name": "Advik Ayurveda Clinic",
   "short_name": "Advik Ayurveda",
   "description": "Authentic Ayurvedic treatments by Dr. K. D. Nakum (B.A.M.S.) - Agnikarma, Panchakarma and more.",
-  "start_url": "/kd.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#faf9f6",
   "theme_color": "#1a4d2e",
