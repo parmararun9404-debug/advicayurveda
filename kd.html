@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advik Ayurveda Clinic | અદ્વિક આયુર્વેદ ક્લિનિક</title>
+    <meta name="description" content="Advik Ayurveda Clinic - Authentic Ayurvedic treatments by Dr. K. D. Nakum (B.A.M.S.). Specialized in Agnikarma, Panchakarma, and chronic disease management in Sutrapada, Gir Somnath.">
+    <meta name="theme-color" content="#1a4d2e">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="logo.jpeg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="logo.jpeg">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -288,7 +293,7 @@
                     <div
                         class="relative w-16 h-16 rounded-full shadow-lg overflow-hidden border-2 border-brand-gold/40">
                         <!-- Advik Ayurveda Logo -->
-                        <img src="WhatsApp Image 2026-04-14 at 4.43.41 PM.jpeg" alt="Advik Ayurveda Logo"
+                        <img src="logo.jpeg" alt="Advik Ayurveda Logo"
                             class="w-full h-full object-cover rounded-full">
                     </div>
                     <div>
@@ -425,7 +430,7 @@
                 <div class="relative" data-aos="fade-left" data-aos-duration="1000">
                     <div
                         class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-700">
-                        <img src="kd.jpg.png" alt="Dr. K. D. Nakum - Advik Ayurveda"
+                        <img src="doctor.png" alt="Dr. K. D. Nakum - Advik Ayurveda"
                             class="w-full h-[600px] object-cover object-top">
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-brand-forest/60 via-transparent to-transparent">
@@ -478,7 +483,7 @@
                 <div data-aos="fade-right">
                     <div class="relative">
                         <div class="absolute -inset-4 bg-brand-gold/20 rounded-3xl transform rotate-3"></div>
-                        <img src="kd.jpg.png" alt="Dr. K. D. Nakum at Clinic"
+                        <img src="doctor.png" alt="Dr. K. D. Nakum at Clinic"
                             class="relative rounded-2xl shadow-2xl w-full object-cover object-top h-[500px]">
                     </div>
                 </div>
@@ -1522,6 +1527,15 @@
         window.addEventListener('online', () => {
             showToast('You are back online!');
         });
+
+        // Register Service Worker (PWA)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then((reg) => console.log('Service Worker registered:', reg.scope))
+                    .catch((err) => console.log('Service Worker error:', err));
+            });
+        }
     </script>
 </body>
 
